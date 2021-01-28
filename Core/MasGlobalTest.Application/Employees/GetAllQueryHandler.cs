@@ -12,7 +12,7 @@ namespace MasGlobalTest.Application.Employees
         public GetAllQueryHandler(IEmployeeRepository employeeService) =>
             (_employeeService) = (employeeService);
 
-        public async Task<IEnumerable<Employee>> Handle(GetEmployeeFilter query)
+        public async Task<IEnumerable<Employee>> HandleAsync(GetEmployeeFilter query)
         {
             var employees = await _employeeService.GetAll().ConfigureAwait(false);
             return GetEmployees(employees);

@@ -12,7 +12,7 @@ namespace MasGlobalTest.Application.Employees
         public GetByIdQueryHandler(IEmployeeRepository employeeService) =>
             (_employeeService) = (employeeService);
 
-        public async Task<Employee> Handle(GetEmployeeFilter query)
+        public async Task<Employee> HandleAsync(GetEmployeeFilter query)
         {
             if (!query.EmployeeId.HasValue)
             {

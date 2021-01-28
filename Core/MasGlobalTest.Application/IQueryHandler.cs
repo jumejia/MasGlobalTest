@@ -12,6 +12,6 @@ namespace MasGlobalTest.Application
         /// </summary>
         /// <param name="query">The query to execute</param>
         /// <returns>Retrieves the query results</returns>
-        Task<TReturn> Handle(TQuery query);
+        Task<TReturn> HandleAsync(TQuery query);
     }
 }
