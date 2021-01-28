@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MasGlobalTest.Common.Exceptions;
 using MasGlobalTest.Domain;
 using MasGlobalTest.ExternalServices;
 using System;
@@ -20,6 +21,12 @@ namespace MasGlobalTest.Application.Employees
             }
 
             var employee = await _employeeService.GetById(query.EmployeeId.Value).ConfigureAwait(false);
+
+            if (employee == null)
+            {
+                throw new EntityDoesNotExistException($"Employee with ID {query.EmployeeId.Value} was not found");
+            }
+
             return GetEmployee(employee);
         }
 

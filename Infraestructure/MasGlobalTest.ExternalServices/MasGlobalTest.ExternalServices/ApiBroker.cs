@@ -8,6 +8,9 @@ namespace MasGlobalTest.ExternalServices
 {
     public class ApiBroker : IApiBroker
     {
+        //private readonly IApiBroker _apiBroker;
+        //public ApiBroker(IApiBroker iApiBroker) => (_apiBroker) = (iApiBroker);
+
         public async Task<T> GetServiceObjectResponseAsync<T>(RequestParameter requestParameter) where T : class
         {
             var response = await GetServiceHttpResponseAsync(requestParameter).ConfigureAwait(false);

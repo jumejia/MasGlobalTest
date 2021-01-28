@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace MasGlobalTest
+namespace Web
 {
     public class Startup
     {
@@ -48,12 +49,35 @@ namespace MasGlobalTest
 
             app.UseRouting();
 
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
+
+            app.MapWhen(
+              context =>
+              {
+                  var path = context.Request.Path.Value.ToLower();
+                  return path.Contains("/") &&
+                         !path.Contains(".js") &&
+                         !path.Contains("/api/") &&
+                         !path.Contains("/assets") &&
+                         !path.Contains(".ico");
+              },
+              branch =>
+              {
+                  branch.Use((context, next) =>
+                  {
+                      context.Request.Path = new PathString("/index.html");
+                      return next();
+                  });
+
+                  branch.UseStaticFiles();
+              });
+
 
             app.UseSpa(spa =>
             {
