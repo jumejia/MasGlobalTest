@@ -32,13 +32,14 @@ namespace MasGlobalTest.Application.Employees
 
         private Employee GetEmployee(EmployeeDto employeeDto)
         {
-            var contractFactory = new EmployeeFactory();
+            var employeeFactory = new EmployeeFactory();
 
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeeDto, Employee>(); });
             IMapper iMapper = config.CreateMapper();
 
-            Employee employee = contractFactory.CreateContract(employeeDto.ContractTypeName);
+            Employee employee = employeeFactory.CreateContract(employeeDto.ContractTypeName);
             iMapper.Map(employeeDto, employee);
+            employee.Role = new Role(employeeDto);
             employee.CalculateSalary();
 
             return employee;

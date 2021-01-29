@@ -1,4 +1,5 @@
 ﻿using MasGlobalTest.Application.Employees.Contract;
+using MasGlobalTest.Domain;
 
 namespace MasGlobalTest.Application.Employees
 {

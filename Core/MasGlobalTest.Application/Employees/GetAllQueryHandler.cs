@@ -21,7 +21,7 @@ namespace MasGlobalTest.Application.Employees
         private IEnumerable<Employee> GetEmployees(IEnumerable<EmployeeDto> employeesDto)
         {
             var employees = new List<Employee>();
-            var contractFactory = new EmployeeFactory();
+            var employeeFactory = new EmployeeFactory();
 
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeeDto, Employee>(); });
             IMapper iMapper = config.CreateMapper();
@@ -30,8 +30,9 @@ namespace MasGlobalTest.Application.Employees
             {
                 foreach (var employeeDto in employeesDto)
                 {
-                    Employee employee = contractFactory.CreateContract(employeeDto.ContractTypeName);
+                    Employee employee = employeeFactory.CreateContract(employeeDto.ContractTypeName);
                     iMapper.Map(employeeDto, employee);
+                    employee.Role = new Role(employeeDto);
 
                     employee.CalculateSalary();
                     employees.Add(employee);

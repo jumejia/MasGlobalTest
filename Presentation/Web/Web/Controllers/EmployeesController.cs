@@ -1,6 +1,7 @@
 ﻿using MasGlobalTest.Application;
 using MasGlobalTest.Application.Employees;
 using MasGlobalTest.Common.Exceptions;
+using MasGlobalTest.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net;
@@ -10,7 +11,7 @@ using Web.General;
 namespace Web.Employees
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class EmployeesController : ControllerBase
     {
         private readonly IQueryHandler<GetEmployeeFilter, IEnumerable<Employee>> _getAllQueryHandler;
@@ -25,7 +26,6 @@ namespace Web.Employees
         }
 
         [HttpGet]
-        [Route("all")]
         public async Task<ActionResult> GetEmployeeAll()
         {
             try

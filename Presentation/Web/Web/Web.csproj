@@ -24,8 +24,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\Employee.ts" />
+    <None Remove="ClientApp\src\app\models\Role.ts" />
+    <None Remove="ClientApp\src\app\services\employee.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Core\MasGlobalTest.Application\MasGlobalTest.Application.csproj" />
     <ProjectReference Include="..\..\..\Core\MasGlobalTest.Common\MasGlobalTest.Common\MasGlobalTest.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\employees - Copy\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\Employee.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\Role.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\employee.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

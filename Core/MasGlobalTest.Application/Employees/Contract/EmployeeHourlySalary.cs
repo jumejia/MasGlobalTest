@@ -1,4 +1,6 @@
-﻿namespace MasGlobalTest.Application.Employees.Contract
+﻿using MasGlobalTest.Domain;
+
+namespace MasGlobalTest.Application.Employees.Contract
 {
     public class EmployeeHourlySalary : Employee
     {

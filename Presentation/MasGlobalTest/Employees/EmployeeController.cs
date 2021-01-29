@@ -1,7 +1,7 @@
 ﻿using MasGlobalTest.Application;
 using MasGlobalTest.Application.Employees;
 using MasGlobalTest.Common.Exceptions;
-using MasGlobalTest.General;
+using MasGlobalTest.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;

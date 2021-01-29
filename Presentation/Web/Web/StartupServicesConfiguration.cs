@@ -1,5 +1,6 @@
 ﻿using MasGlobalTest.Application;
 using MasGlobalTest.Application.Employees;
+using MasGlobalTest.Domain;
 using MasGlobalTest.ExternalServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
